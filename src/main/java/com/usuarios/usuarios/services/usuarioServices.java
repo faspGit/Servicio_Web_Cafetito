@@ -7,6 +7,7 @@ import com.usuarios.usuarios.repositories.repositoriesUsuario;
 import java.util.Base64;
 import java.util.List;
 import java.util.Base64;
+import java.util.Date;
 import java.util.logging.Logger;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
@@ -32,8 +33,9 @@ public class usuarioServices {
     public usuario createUsuario(usuarioDto dto) throws Exception{
         String passEncriptada =  encriptar(dto.getContrasena());
         String pasDesencriptada = desencriptar(passEncriptada);
+        java.util.Date fecha = new Date();
         final usuario usuario = new usuario();
-        usuario.setIdUsuario(dto.getIdUsuario());
+        usuario.setNit(dto.getNit());
         usuario.setNombre(dto.getNombre());
         usuario.setApellido(dto.getApellido());
         usuario.setContrasena(passEncriptada);
@@ -41,6 +43,10 @@ public class usuarioServices {
         usuario.setEdad(dto.getEdad());
         usuario.setTelefono(dto.getTelefono());
         usuario.setDireccion(dto.getDireccion());
+        usuario.setEstado("1020");
+        usuario.setFecha_inscripcion(fecha);
+        System.out.println("NOMBRE ENCRIPTADO....>>>>>>>>><<<<<<<: "+passEncriptada);
+        System.out.println("NOMBRE Desencriptado....>>>>>>>>><<<<<<<: "+pasDesencriptada);
         return repositoriesUsuario.save(usuario);
     }
     

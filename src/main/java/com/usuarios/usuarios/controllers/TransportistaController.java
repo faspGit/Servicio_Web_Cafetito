@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -17,7 +18,7 @@ public class TransportistaController {
     TransportistaServices TransportistaServices;
     
     @CrossOrigin(origins="http://localhost:4200")
-    @GetMapping(value="Proyecto/findAllProyecto")
+    @GetMapping(value="Transportista/EncuentraTransportista")
     public List<Transportista> getAllTransportista (){
         return TransportistaServices.getAllTransportista();
     }
@@ -25,15 +26,23 @@ public class TransportistaController {
     //metodo para crear un usuario
     @CrossOrigin(origins="http://localhost:4200")
     @PostMapping(value="Transportista/InscribirTransportista")
-    public String InscribirTransportista(@RequestBody TransportistaDto dto) throws Exception{
-        return TransportistaServices.InscribirTransportista(dto);
+    public String InscribirTransportista(
+            @RequestBody TransportistaDto dto,
+            @RequestParam(required=false)String nit,
+            @RequestParam(required=false)String contrasena
+    ) throws Exception{
+        return TransportistaServices.InscribirTransportista(dto, nit, contrasena);
     }
     
     //metodo para crear un usuario
     @CrossOrigin(origins="http://localhost:4200")
     @PostMapping(value="Transportista/consultaTransportista")
-    public boolean consultaTransportista(@RequestBody TransportistaDto dto){
-        return TransportistaServices.consultaTransportista(dto);
+    public String consultaTransportista(
+            @RequestBody TransportistaDto dto,
+            @RequestParam(required=false)String nit,
+            @RequestParam(required=false)String contrasena
+    )throws Exception{
+        return TransportistaServices.consultaTransportista(dto, nit, contrasena);
     }
     
 }

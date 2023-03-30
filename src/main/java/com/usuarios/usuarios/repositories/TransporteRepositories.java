@@ -17,4 +17,16 @@ public interface TransporteRepositories extends CrudRepository<Transporte,Intege
     @Transactional 
     public String consultaTransporte(@Param("pMatricula") String pMatricula);
     
+    
+    //Area de Consultas a BD
+    @Query(value = "select usuario.estado from  usuario where usuario.nit= :pnit limit 1", nativeQuery = true)
+    @Transactional 
+    public String consultaNit(@Param("pnit") String pnit);
+    
+    //Area de Consultas a BD
+    @Query(value = "select usuario.estado from  usuario where usuario.contrasena = :pcontrasena limit 1", nativeQuery = true)
+    @Transactional 
+    public String consultaContrasena(@Param("pcontrasena") String pcontrasena);
+    
+    
 }

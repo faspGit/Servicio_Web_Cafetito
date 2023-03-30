@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -26,14 +27,22 @@ public class TransporteController {
     //metodo para crear un usuario
     @CrossOrigin(origins="http://localhost:4200")
     @PostMapping(value="Transporte/InscribirTransporte")
-    public String InscribirTransporte(@RequestBody TransporteDto dto){
-        return TransporteServices.InscribirTransporte(dto);
+    public String InscribirTransporte(
+            @RequestBody TransporteDto dto,
+            @RequestParam(required=false)String nit,
+            @RequestParam(required=false)String contrasena
+    )throws Exception{
+        return TransporteServices.InscribirTransporte(dto, nit, contrasena);
     }
     
     //metodo para crear un usuario
     @CrossOrigin(origins="http://localhost:4200")
     @PostMapping(value="Transporte/consultaTransporte")
-    public boolean consultarTransporte(@RequestBody TransporteDto dto){
-        return TransporteServices.consultarTransporte(dto);
+    public String consultarTransporte(
+            @RequestBody TransporteDto dto,
+            @RequestParam(required=false)String nit,
+            @RequestParam(required=false)String contrasena
+    )throws Exception{
+        return TransporteServices.consultarTransporte(dto, nit, contrasena);
     }
 }
