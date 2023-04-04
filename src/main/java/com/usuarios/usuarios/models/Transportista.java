@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.usuarios.usuarios.models;
 
 
@@ -15,18 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 
-/*
-antes de guardar corroborar que la licencia sea tipa A
-para consultar lle enviare id agricultor y el numero de licencia de transportista
-devuelva el estado.
-
-
-
-*/
-/**
- *
- * @author fasp9
- */
 @Entity
 @Table(name="Transportista", schema="public")
 public class Transportista {
@@ -79,8 +63,6 @@ public class Transportista {
         this.estado = estado;
     }
     
-    
-    
     public void setNumeroLicencia(String numeroLicencia) {
         this.numeroLicencia = numeroLicencia;
     }
@@ -96,7 +78,5 @@ public class Transportista {
     public void setTipoLicencia(String tipoLicencia) {
         this.tipoLicencia = tipoLicencia;
     }
-    
-     
      
 }

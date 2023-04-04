@@ -45,4 +45,15 @@ public class TransportistaController {
         return TransportistaServices.consultaTransportista(dto, nit, contrasena);
     }
     
+    //metodo para crear un usuario
+    @CrossOrigin(origins="http://localhost:4200")
+    @PostMapping(value="Transportista/eliminarTransportista")
+    public String eliminarTransportista(
+            @RequestBody TransportistaDto dto,
+            @RequestParam(required=false)String nit,
+            @RequestParam(required=false)String contrasena
+    )throws Exception{
+        return TransportistaServices.eliminarTransportista(dto, nit, contrasena);
+    }
+    
 }

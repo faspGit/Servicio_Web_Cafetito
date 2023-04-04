@@ -80,6 +80,24 @@ public class TransporteServices {
         }
     }
     
+    //Metodo para eliminar Transporte activo o inactivo.
+    public String eliminarTransporte(TransporteDto dto, String nit, String contrasena) throws Exception {
+        String a = nit;
+        String b = this.encriptar(contrasena);
+        String c = this.desencriptar(b);
+        String pMatricula = dto.getMatricula();
+        if (this.consultaDatos(a, b)) {
+            int matricula = this.TransporteRepositories.eliminaTransporte(pMatricula);
+            if (matricula > 0) {
+                return "El transporte fue eliminado con exito";
+            } else {
+                return "Error al eliminar el transporte";
+            }
+        } else {
+            return "Acceso no autorizado";
+        }
+    }
+    
      public static String encriptar(String texto) throws Exception {
         SecretKeySpec claveSecreta = new SecretKeySpec(clave.getBytes(), "AES");
         Cipher cifrador = Cipher.getInstance("AES");

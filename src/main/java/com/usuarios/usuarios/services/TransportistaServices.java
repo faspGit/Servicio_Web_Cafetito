@@ -78,6 +78,23 @@ public class TransportistaServices {
         }
    }
    
+   //Metodo para eliminar Transporte activo o inactivo.
+    public String eliminarTransportista(TransportistaDto dto, String nit, String contrasena) throws Exception {
+        String a = nit;
+        String b = this.encriptar(contrasena);
+        String plicencia = dto.getNumeroLicencia();
+        if (this.consultaDatos(a, b)) {
+            int licencia = this.TransportistaRepositories.eliminarTransportista(plicencia);
+            if (licencia > 0) {
+                return "El transporte fue eliminado con exito";
+            } else {
+                return "Error al eliminar el transporte";
+            }
+        } else {
+            return "Acceso no autorizado";
+        }
+    }
+    
    public boolean consultaDatos(String a, String b) {
         String pnit = a;
         String pcontrasena = b;
