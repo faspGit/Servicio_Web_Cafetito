@@ -14,7 +14,7 @@ public interface TransporteRepositories extends CrudRepository<Transporte,Intege
     public List<Transporte> findAll();
     
     //Area de Consultas a BD
-    @Query(value = "select transporte.marca from transporte  where transporte.matricula= :pMatricula limit 1", nativeQuery = true)
+    @Query(value = "select transporte.estado from transporte  where transporte.matricula= :pMatricula limit 1", nativeQuery = true)
     @Transactional 
     public String consultaTransporte(@Param("pMatricula") String pMatricula);
     
@@ -32,7 +32,7 @@ public interface TransporteRepositories extends CrudRepository<Transporte,Intege
     //Area de Consultas a BD
     @Transactional
     @Modifying(flushAutomatically = true)
-    @Query(value = "update transporte  set estado=1028 where matricula= :pMatricula", nativeQuery = true)
+    @Query(value = "update transporte  set estado=1030 where matricula= :pMatricula", nativeQuery = true)
     public int eliminaTransporte(@Param("pMatricula") String pMatricula);
 
 

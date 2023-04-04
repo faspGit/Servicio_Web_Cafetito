@@ -15,7 +15,7 @@ public interface TransportistaRepositories extends CrudRepository<Transportista,
     public List<Transportista> findAll();
     
     //Area de Consultas a BD
-    @Query(value = "select transportista.nombre from transportista  where transportista.numero_licencia= :pLicencia limit 1", nativeQuery = true)
+    @Query(value = "select transportista.estado from transportista  where transportista.numero_licencia= :pLicencia limit 1", nativeQuery = true)
     @Transactional 
     public String consultaTransportista(@Param("pLicencia") String pLicencia);
     

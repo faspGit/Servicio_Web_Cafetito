@@ -4,7 +4,10 @@ package com.usuarios.usuarios.controllers;
 import com.usuarios.usuarios.Dto.TransporteDto;
 import com.usuarios.usuarios.models.Transporte;
 import com.usuarios.usuarios.services.TransporteServices;
+import java.util.Base64;
 import java.util.List;
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -55,4 +58,5 @@ public class TransporteController {
     )throws Exception{
         return TransporteServices.eliminarTransporte(dto, nit, contrasena);
     }
+   
 }

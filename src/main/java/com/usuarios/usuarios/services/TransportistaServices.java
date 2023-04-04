@@ -56,7 +56,7 @@ public class TransportistaServices {
         return "El Transportista debe tener licencia tipo A";
        }
        }else {
-            return "Acceso no autorizado";
+            return "Estimado Agricultor, sus credenciales no son correctas.   Acceso no autorizado";
         }
    }
    
@@ -69,12 +69,26 @@ public class TransportistaServices {
         String numeroLicencia = this.TransportistaRepositories.consultaTransportista(pLicencia);
         if (this.consultaDatos(a,b)) {
        if(numeroLicencia==null || numeroLicencia.equals("")){
-       return "El Transportista no esta inscrito o no esta activo";
+       return "No se obtuvieron los datos del Transportista Ingresado";
        }else{
-       return "El Transportista esta activo";
+           System.out.println("Los datos son 555555555555555555555555555555555555555555555"+numeroLicencia);
+       switch(numeroLicencia){
+           
+                case "1028":
+                    return "El Transportista con el numero de Licencia: "+pLicencia+" se encuentra Inactivo";
+                    
+                case "1020":
+                    return "El Transportista con el numero de Licencia: "+pLicencia+" se encuentra Activo";
+                    
+                case "1030":
+                    return "El Transportista con el numero de Licencia: "+pLicencia+" se encuentra Eliminado";
+                    
+                default :
+                      return  "No se obtuvo el estado del Transportista con el numero de Licencia: "+pLicencia;
+            }
        }
         }else {
-            return "Acceso no autorizado";
+            return "Estimado Agricultor, sus credenciales no son correctas.   Acceso no autorizado";
         }
    }
    
@@ -86,12 +100,12 @@ public class TransportistaServices {
         if (this.consultaDatos(a, b)) {
             int licencia = this.TransportistaRepositories.eliminarTransportista(plicencia);
             if (licencia > 0) {
-                return "El transporte fue eliminado con exito";
+                return "El transporte con las placas: "+ plicencia + " fue eliminado con exito";
             } else {
-                return "Error al eliminar el transporte";
+                return "Error al eliminar el transporte con las placas: "+ plicencia;
             }
         } else {
-            return "Acceso no autorizado";
+            return "Estimado Agricultor, sus credenciales no son correctas.   Acceso no autorizado";
         }
     }
     

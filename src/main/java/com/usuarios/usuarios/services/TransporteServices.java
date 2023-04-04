@@ -46,7 +46,7 @@ public class TransporteServices {
                 return "El Transporte debe ser modelo 1960 o mas reciente";
             }
         } else {
-            return "Acceso no autorizado";
+            return "Estimado Agricultor, sus credenciales no son correctas.   Acceso no autorizado";
         }
     }
 
@@ -58,12 +58,24 @@ public class TransporteServices {
         String matricula = this.TransporteRepositories.consultaTransporte(pMatricula);
         if (this.consultaDatos(a,b)) {
         if (matricula == null || matricula.equals("")) {
-            return "El transporte no esta inscrito o no esta activo";
+            return "No se Obtuvieron datos del Transporte ingresado";
         } else {
-            return "El Transporte esta activo";
+            switch(matricula){
+                case "1028":
+                    return "El vehiculo con las placas: "+pMatricula+" se encuentra Inactivo";
+                    
+                case "1020":
+                    return "El vehiculo con las placas: "+pMatricula+" se encuentra Activo";
+                    
+                case "1030":
+                    return "El vehiculo con las placas: "+pMatricula+" se encuentra Eliminado";
+                    
+                default :
+                      return  "No se obtuvo el estado del vehiculo con las placas: "+pMatricula;
+            }
         }
         }else {
-            return "Acceso no autorizado";
+            return "Estimado Agricultor, sus credenciales no son correctas.   Acceso no autorizado";
         }
     }
 
@@ -84,17 +96,16 @@ public class TransporteServices {
     public String eliminarTransporte(TransporteDto dto, String nit, String contrasena) throws Exception {
         String a = nit;
         String b = this.encriptar(contrasena);
-        String c = this.desencriptar(b);
         String pMatricula = dto.getMatricula();
         if (this.consultaDatos(a, b)) {
             int matricula = this.TransporteRepositories.eliminaTransporte(pMatricula);
             if (matricula > 0) {
-                return "El transporte fue eliminado con exito";
+                return "El transporte con las placas: "+pMatricula+" fue eliminado con exito";
             } else {
-                return "Error al eliminar el transporte";
+                return "Error al eliminar el transporte con las placas: "+pMatricula+"";
             }
         } else {
-            return "Acceso no autorizado";
+            return "Estimado Agricultor, sus credenciales no son correctas.   Acceso no autorizado";
         }
     }
     
