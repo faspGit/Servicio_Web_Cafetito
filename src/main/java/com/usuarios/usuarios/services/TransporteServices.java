@@ -5,6 +5,7 @@ import com.usuarios.usuarios.Dto.TransporteDto;
 import com.usuarios.usuarios.models.Transporte;
 import com.usuarios.usuarios.repositories.TransporteRepositories;
 import java.util.Base64;
+import java.util.Date;
 import java.util.List;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
@@ -30,13 +31,16 @@ public class TransporteServices {
         String a = nit;
         String b = this.encriptar(contrasena);
         String c = this.desencriptar(b);
+        java.util.Date fecha = new Date();
         final Transporte Transporte = new Transporte();
         Transporte.setMatricula(dto.getMatricula());
         Transporte.setModelo(dto.getModelo());
         Transporte.setNumero_ejes(dto.getNumero_ejes());
         Transporte.setMarca(dto.getMarca());
-        Transporte.setPesaje_mercaderia(dto.getPesaje_mercaderia());
-        Transporte.setFecha_inscripcion(dto.getFecha_inscripcion());
+        Transporte.setPeso_de_camion(dto.getPeso_de_camion());
+        //Transporte.setPeso_de_mercaderia(dto.getPeso_de_mercaderia());
+        Transporte.setFecha_inscripcion(fecha);
+        Transporte.setColor(dto.getColor());
         Transporte.setEstado(1020);
         if (this.consultaDatos(a,b)) {
             if (dto.getModelo() >= 1960) {

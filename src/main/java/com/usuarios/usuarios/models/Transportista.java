@@ -14,69 +14,88 @@ import javax.persistence.Table;
 @Entity
 @Table(name="Transportista", schema="public")
 public class Transportista {
-    private String numeroLicencia ; 
-    private String nombre; 
-    private String apellido; 
-    private String tipoLicencia;
-    //private Date fechaCreacion;
+    private String numero_licencia ; 
+    private String nombres; 
+    private String apellidos; 
+    private String tipo_licencia;
     private Integer estado;
+    private Date fecha_inscripcion;
+    private Date fecha_modificacion;
 
     public Transportista() {
     }
 
-    public Transportista(String numeroLicencia, String nombre, String apellido, String tipoLicencia,Integer estado) {
-        this.numeroLicencia = numeroLicencia;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.tipoLicencia = tipoLicencia;
-        //this.fechaCreacion = fechaCreacion;
+    public Transportista(String numero_licencia, String nombres, String apellidos, String tipo_licencia, Integer estado, Date fecha_inscripcion, Date fecha_modificacion) {
+        this.numero_licencia = numero_licencia;
+        this.nombres = nombres;
+        this.apellidos = apellidos;
+        this.tipo_licencia = tipo_licencia;
         this.estado = estado;
+        this.fecha_inscripcion = fecha_inscripcion;
+        this.fecha_modificacion = fecha_modificacion;
     }
 
     @Id
-    @Column (name="numeroLicencia", length=13)
-    public String getNumeroLicencia() {
-        return numeroLicencia;
+    @Column (name="numero_licencia", length=13)
+    public String getNumero_licencia() {
+        return numero_licencia;
     }
 
-    @Column (name="nombre", length=30)
-    public String getNombre() {
-        return nombre;
-    }
-    
-    @Column (name="apellido", length=30)
-    public String getApellido() {
-        return apellido;
+    @Column (name="nombres", length=13)
+    public String getNombres() {
+        return nombres;
     }
 
-    @Column (name="tipoLicencia", length=1)
-    public String getTipoLicencia() {
-        return tipoLicencia;
+    @Column (name="apellidos", length=13)
+    public String getApellidos() {
+        return apellidos;
     }
 
-    @Column (name="estado", length=9)
+    @Column (name="tipo_licencia", length=13)
+    public String getTipo_licencia() {
+        return tipo_licencia;
+    }
+
+    @Column (name="estado")
     public Integer getEstado() {
         return estado;
+    }
+
+    @Column (name="fecha_inscripcion")
+    public Date getFecha_inscripcion() {
+        return fecha_inscripcion;
+    }
+
+    @Column (name="fecha_modificacion")
+    public Date getFecha_modificacion() {
+        return fecha_modificacion;
+    }
+
+    public void setNumero_licencia(String numero_licencia) {
+        this.numero_licencia = numero_licencia;
+    }
+
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+    public void setTipo_licencia(String tipo_licencia) {
+        this.tipo_licencia = tipo_licencia;
     }
 
     public void setEstado(Integer estado) {
         this.estado = estado;
     }
-    
-    public void setNumeroLicencia(String numeroLicencia) {
-        this.numeroLicencia = numeroLicencia;
-    }
-    
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+
+    public void setFecha_inscripcion(Date fecha_inscripcion) {
+        this.fecha_inscripcion = fecha_inscripcion;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setFecha_modificacion(Date fecha_modificacion) {
+        this.fecha_modificacion = fecha_modificacion;
     }
-
-    public void setTipoLicencia(String tipoLicencia) {
-        this.tipoLicencia = tipoLicencia;
-    }
-     
 }

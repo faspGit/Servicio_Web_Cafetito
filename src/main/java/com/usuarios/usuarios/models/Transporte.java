@@ -10,25 +10,32 @@ import javax.persistence.Table;
 @Entity
 @Table(name="Transporte", schema="public")
 public class Transporte {
-    private  String matricula;
+    
+    private String matricula;
     private Integer modelo;
     private String numero_ejes;
     private String marca;
     private Integer estado;
-    private Integer pesaje_mercaderia;
+    private String color;
+    private Integer peso_de_camion;
+    private Integer peso_de_mercaderia;
     private Date fecha_inscripcion ;
+    private String fecha_modificacion;
 
     public Transporte() {
     }
 
-    public Transporte(String matricula, Integer modelo, String numero_ejes, String marca, Integer estado, Integer pesaje_mercaderia, Date fecha_inscripcion) {
+    public Transporte(String matricula, Integer modelo, String numero_ejes, String marca, Integer estado, String color, Integer peso_de_camion, Integer peso_de_mercaderia, Date fecha_inscripcion, String fecha_modificacion) {
         this.matricula = matricula;
         this.modelo = modelo;
         this.numero_ejes = numero_ejes;
         this.marca = marca;
         this.estado = estado;
-        this.pesaje_mercaderia = pesaje_mercaderia;
+        this.color = color;
+        this.peso_de_camion = peso_de_camion;
+        this.peso_de_mercaderia = peso_de_mercaderia;
         this.fecha_inscripcion = fecha_inscripcion;
+        this.fecha_modificacion = fecha_modificacion;
     }
 
     @Id
@@ -37,34 +44,49 @@ public class Transporte {
         return matricula;
     }
 
-    @Column (name="modelo", length=30)
+    @Column (name="modelo")
     public Integer getModelo() {
         return modelo;
     }
 
-    @Column (name="numero_ejes", length=30)
+    @Column (name="numero_ejes", length=13)
     public String getNumero_ejes() {
         return numero_ejes;
     }
 
-    @Column (name="marca", length=30)
+    @Column (name="marca", length=13)
     public String getMarca() {
         return marca;
     }
 
-    @Column (name="estado", length=30)
+    @Column (name="estado")
     public Integer getEstado() {
         return estado;
     }
 
-    @Column (name="pesaje_mercaderia", length=30)
-    public Integer getPesaje_mercaderia() {
-        return pesaje_mercaderia;
+    @Column (name="color", length=13)
+    public String getColor() {
+        return color;
     }
 
-    @Column (name="fecha_inscripcion", length=30)
+    @Column (name="peso_de_camion")
+    public Integer getPeso_de_camion() {
+        return peso_de_camion;
+    }
+
+    @Column (name="peso_de_mercaderia")
+    public Integer getPeso_de_mercaderia() {
+        return peso_de_mercaderia;
+    }
+
+    @Column (name="fecha_inscripcion")
     public Date getFecha_inscripcion() {
         return fecha_inscripcion;
+    }
+
+    @Column (name="fecha_modificacion", length=13)
+    public String getFecha_modificacion() {
+        return fecha_modificacion;
     }
 
     public void setMatricula(String matricula) {
@@ -87,13 +109,27 @@ public class Transporte {
         this.estado = estado;
     }
 
-    public void setPesaje_mercaderia(Integer pesaje_mercaderia) {
-        this.pesaje_mercaderia = pesaje_mercaderia;
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public void setPeso_de_camion(Integer peso_de_camion) {
+        this.peso_de_camion = peso_de_camion;
+    }
+
+    public void setPeso_de_mercaderia(Integer peso_de_mercaderia) {
+        this.peso_de_mercaderia = peso_de_mercaderia;
     }
 
     public void setFecha_inscripcion(Date fecha_inscripcion) {
         this.fecha_inscripcion = fecha_inscripcion;
     }
+
+    public void setFecha_modificacion(String fecha_modificacion) {
+        this.fecha_modificacion = fecha_modificacion;
+    }
+
     
+   
     
 }

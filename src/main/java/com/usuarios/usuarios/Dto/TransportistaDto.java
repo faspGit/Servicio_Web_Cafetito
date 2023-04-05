@@ -9,9 +9,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class TransportistaDto {
-    private String numeroLicencia; 
-    private String nombre; 
-    private String apellido; 
-    private String tipoLicencia;
-    //private Date fechaCreacion;
+    private String numero_licencia ; 
+    private String nombres; 
+    private String apellidos; 
+    private String tipo_licencia;
+    //private Integer estado;
+    //private Date fecha_inscripcion;
+    //private Date fecha_modificacion;
 }

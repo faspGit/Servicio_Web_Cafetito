@@ -11,6 +11,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 import com.usuarios.usuarios.repositories.TransportistaRepositories;
 import java.util.Base64;
+import java.util.Date;
 import java.util.logging.Logger;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
@@ -41,15 +42,17 @@ public class TransportistaServices {
         String a = nit;
         String b = this.encriptar(contrasena);
         String c = this.desencriptar(b);
+        java.util.Date fecha = new Date();
        String passEncriptado = encriptar(contrasena);
        final Transportista Transportista = new Transportista ();
-       Transportista.setNumeroLicencia(dto.getNumeroLicencia());
-       Transportista.setNombre(dto.getNombre());
-       Transportista.setApellido(dto.getApellido());
-       Transportista.setTipoLicencia(dto.getTipoLicencia());
+       Transportista.setNumero_licencia(dto.getNumero_licencia());
+       Transportista.setNombres(dto.getNombres());
+       Transportista.setApellidos(dto.getApellidos());
+       Transportista.setTipo_licencia(dto.getTipo_licencia());
+       Transportista.setFecha_inscripcion(fecha);
        Transportista.setEstado(1020);
        if (this.consultaDatos(a,b)) {
-       if(dto.getTipoLicencia().equals("A")){
+       if(dto.getTipo_licencia().equals("A")){
          TransportistaRepositories.save(Transportista);
          return "El Transportista fue Inscrito Correctamente en el Beneficio";
        }else{
@@ -65,7 +68,7 @@ public class TransportistaServices {
         String a = nit;
         String b = this.encriptar(contrasena);
         String c = this.desencriptar(b);
-        String pLicencia = dto.getNumeroLicencia();
+        String pLicencia = dto.getNumero_licencia();
         String numeroLicencia = this.TransportistaRepositories.consultaTransportista(pLicencia);
         if (this.consultaDatos(a,b)) {
        if(numeroLicencia==null || numeroLicencia.equals("")){
@@ -96,7 +99,7 @@ public class TransportistaServices {
     public String eliminarTransportista(TransportistaDto dto, String nit, String contrasena) throws Exception {
         String a = nit;
         String b = this.encriptar(contrasena);
-        String plicencia = dto.getNumeroLicencia();
+        String plicencia = dto.getNumero_licencia();
         if (this.consultaDatos(a, b)) {
             int licencia = this.TransportistaRepositories.eliminarTransportista(plicencia);
             if (licencia > 0) {

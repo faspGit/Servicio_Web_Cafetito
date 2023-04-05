@@ -32,7 +32,7 @@ public interface TransportistaRepositories extends CrudRepository<Transportista,
     //Area de Consultas a BD
     @Transactional
     @Modifying(flushAutomatically = true)
-    @Query(value = "update transportista  set estado=1028 where numero_licencia= :plicencia", nativeQuery = true)
+    @Query(value = "update transportista  set estado=1030 where numero_licencia= :plicencia", nativeQuery = true)
     public int eliminarTransportista(@Param("plicencia") String plicencia);
 
 
