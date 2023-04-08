@@ -16,20 +16,27 @@ public class pesajePesoCabalServices {
     @Autowired
     pesajePesoCabalRepositories pesajePesoCabalRepositories;
     
-    
     @Transactional
     public List<pesajePesoCabal> getAllPesajes(){
         return pesajePesoCabalRepositories.findAll();
     }
     
     @Transactional
-    public pesajePesoCabal createPesaje(pesajePesoCabalDto dto){
+    public String createPesaje(pesajePesoCabalDto dto) {
         final pesajePesoCabal pesajePesoCabal = new pesajePesoCabal();
-        pesajePesoCabal.setIdCuenta(dto.getIdCuenta());
-        pesajePesoCabal.setPrimerPesaje(dto.getPrimerPesaje());
-        pesajePesoCabal.setPesajeParcial(dto.getPesajeParcial());
-        pesajePesoCabal.setUltimoPesaje(dto.getUltimoPesaje());
-        pesajePesoCabal.setPesoMarcado(dto.getPesoMarcado());
-        return pesajePesoCabalRepositories.save(pesajePesoCabal);
+        pesajePesoCabal.setId_peso(dto.getId_peso());
+        pesajePesoCabal.setId_cuenta(dto.getId_cuenta());
+        pesajePesoCabal.setMatricula(dto.getMatricula());
+        pesajePesoCabal.setNumero_licencia(dto.getNumero_licencia());
+        pesajePesoCabal.setPeso_marcado(dto.getPeso_marcado());
+        pesajePesoCabal.setPeso_de_camion(dto.getPeso_de_camion());
+        pesajePesoCabal.setPeso_cargamento((dto.getPeso_marcado()) - (dto.getPeso_de_camion()));
+
+        if (dto.getPeso_marcado() < dto.getPeso_de_camion()) {
+            return "El pesaje marcado no puede ser menor al peso del camion.";
+        } else {
+            pesajePesoCabalRepositories.save(pesajePesoCabal);
+            return "El pesaje Fue registrado con exito.";
+        }
     }
 }

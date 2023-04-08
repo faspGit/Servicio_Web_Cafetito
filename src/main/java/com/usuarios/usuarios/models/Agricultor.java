@@ -19,8 +19,7 @@ import javax.persistence.Table;
 @Table(name="Agricultor", schema="public")
 public class Agricultor {
     private String nit;
-    private String nombre;
-    private String apellido;
+    private String nombre_comercial;
     private String contrasena;
     private String correo;
     private Integer edad;
@@ -33,10 +32,9 @@ public class Agricultor {
     public Agricultor() {
     }
 
-    public Agricultor(String nit, String nombre, String apellido, String contrasena, String correo, Integer edad, String telefono, String direccion, String estado, Date fecha_inscripcion, Date fecha_modificacion) {
+    public Agricultor(String nit, String nombre_comercial, String contrasena, String correo, Integer edad, String telefono, String direccion, String estado, Date fecha_inscripcion, Date fecha_modificacion) {
         this.nit = nit;
-        this.nombre = nombre;
-        this.apellido = apellido;
+        this.nombre_comercial = nombre_comercial;
         this.contrasena = contrasena;
         this.correo = correo;
         this.edad = edad;
@@ -53,15 +51,12 @@ public class Agricultor {
         return nit;
     }
 
-    @Column (name="nombre", length=50)
-    public String getNombre() {
-        return nombre;
+    @Column (name="nombre_comercial", length=50)
+    public String getNombre_comercial() {
+        return nombre_comercial;
     }
 
-    @Column (name="apellido", length=50)
-    public String getApellido() {
-        return apellido;
-    }
+   
 
     @Column (name="contrasena", length=50)
     public String getContrasena() {
@@ -107,13 +102,10 @@ public class Agricultor {
         this.nit = nit;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombre_comercial(String nombre_comercial) {
+        this.nombre_comercial = nombre_comercial;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
 
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;

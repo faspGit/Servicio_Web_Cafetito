@@ -17,16 +17,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class AgricultorDto {
-    private String nit;
-    private String nombre_comercial;
-    private String contrasena;
-    private String correo;
-    private Integer edad;
-    private String telefono;
-    private String direccion;
-    //private String estado;
-    //private Date fecha_inscripcion;
-    //private Date fecha_modificacion;
+public class CuentaDto {
+    //private Integer id_cuenta;
+    //private String estado_cuenta;
+    private Integer peso_total_de_envio;
+    private Integer numero_parcialidades;
+    private String matriculas_autorizadas;
+    private String nit_agricultor;
+    //private Integer numero_pesajes_registrados;
+    //private Date fecha_creacion;
     
 }

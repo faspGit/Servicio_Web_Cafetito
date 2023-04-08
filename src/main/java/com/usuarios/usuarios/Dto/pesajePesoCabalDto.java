@@ -8,9 +8,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class pesajePesoCabalDto {
-    private String idCuenta ;
-    private String primerPesaje;
-    private String pesajeParcial;
-    private String ultimoPesaje;
-    private String pesoMarcado;
+    private Integer id_peso;
+    private String id_cuenta ;
+    private String matricula;
+    private String numero_licencia;
+    private Integer peso_marcado;
+    private Integer peso_de_camion;
+    //private Integer peso_cargamento;
  }

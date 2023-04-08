@@ -28,7 +28,7 @@ public class pesajePesoCabalController {
     //metodo para crear un usuario
     @CrossOrigin(origins="http://localhost:4200")
     @PostMapping(value="pesajePesoCabal/createPesaje")
-    public pesajePesoCabal createPesaje(@RequestBody pesajePesoCabalDto dto){
+    public String createPesaje(@RequestBody pesajePesoCabalDto dto){
         return pesajePesoCabalServices.createPesaje(dto);
     }
 }

@@ -41,8 +41,7 @@ public class AgricultorServices {
         java.util.Date fecha = new Date();
         final Agricultor Agricultor = new Agricultor();
         Agricultor.setNit(dto.getNit());
-        Agricultor.setNombre(dto.getNombre());
-        Agricultor.setApellido(dto.getApellido());
+        Agricultor.setNombre_comercial(dto.getNombre_comercial());
         Agricultor.setContrasena(passEncriptada);
         Agricultor.setCorreo(dto.getCorreo());
         Agricultor.setEdad(dto.getEdad());
